@@ -1,0 +1,46 @@
+/* * * Standard element styles * * */
+html {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;    
+    text-align: center;
+}
+
+h1 {
+    font-weight: bold;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    display: inline-block;
+}
+
+/* * * Custom styles * * */
+.card {
+    border-radius: 5%;
+    font-family: 'Gochi Hand', cursive;
+    letter-spacing: 0.2em;
+    height: 15em;
+    margin: 1em;
+    padding: 1em 1em 2em;
+    width: 10em;
+}
+
+.front {
+    background-color: paleturquoise;
+}
+
+.back {
+    background-color: palevioletred;
+}
+
+.delete-card {
+    color: red;
+    display: block;
+    margin-bottom: 1em;
+    text-align: right;
+}
+
+/* * * Media queried styles * * */

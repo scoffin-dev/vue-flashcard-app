@@ -2,10 +2,28 @@
 
 <head>
     <title>Vue Flashcard App</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Gochi+Hand&display=swap" rel="stylesheet"> 
 </head>
 
 <body>
     <h1>Vue Flashcard App</h1>
+
+    <!-- Vue template -->
+    <div id="flashcard-app">
+        <ul class="flashcard-list">
+            <li v-for="card in deck" >
+                <div @click="flip(card)" v-bind:class="!card.flipped ? 'front': 'back'" class="card">
+                    <span class="delete-card">X</span>
+                    <span v-if="!card.flipped">{{ card.front }}</span>
+                    <span v-else>{{ card.back }}</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="app.js"></script>
 </body>
 
 </html>
