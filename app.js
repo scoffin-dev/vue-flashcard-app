@@ -22,12 +22,6 @@ const cards = [
     },
   ]; 
 
-  // Get infor for new cards from user
-  // Add new card when user clicks a button
-  // Delete cards
-  // Animate card flip
-  // Display error message if front and/or back isn't provided for new card
-
   new Vue({
     el: '#flashcard-app',
     data: {
