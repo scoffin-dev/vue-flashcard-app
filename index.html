@@ -1,29 +1,46 @@
 <!DOCTYPE html>
-
+<html lang="en">
 <head>
-    <title>Vue Flashcard App</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto|Gochi+Hand&display=swap" rel="stylesheet"> 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <title>Flash!</title>
 </head>
-
 <body>
-    <h1>Vue Flashcard App</h1>
+  <div id="flashcard-app" class="container">
 
-    <!-- Vue template -->
-    <div id="flashcard-app">
-        <ul class="flashcard-list">
-            <li v-for="card in deck" >
-                <div @click="flip(card)" v-bind:class="!card.flipped ? 'front': 'back'" class="card">
-                    <span class="delete-card">X</span>
-                    <span v-if="!card.flipped">{{ card.front }}</span>
-                    <span v-else>{{ card.back }}</span>
-                </div>
-            </li>
-        </ul>
+    <h1>Flashcard App!</h1>
+
+    <div class="flashcard-form">
+      <label for="front">Front
+        <input v-model="newCardFront" type="text" id="front">
+      </label>
+      <label for="back">Back
+        <input v-model="newCardBack" v-on:keypress.enter="addNewCard" type="text" id="back">
+      </label>
+      <button v-on:click="addNewCard()">Add a New Card</button>
+      <span v-show="error" class="error">Oops! Flashcards need a front and a back.</span>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
-    <script src="app.js"></script>
-</body>
+    <ul class="flashcard-list" >
+      <li v-on:click="toggleCard(card)" v-for="(card, index) in cards">
+        <transition name="flipCard">
+          <p v-if="!card.flipped" key="front" class="card">
+              {{card.front}}
+              <span v-on:click="cards.splice(index, 1)" class="delete-card">X</span>
+          </p>
+          <p v-else key="back" class="card" >
+            {{card.back}}
+            <span v-on:click="cards.splice(index, 1)" class="delete-card">X</span>
+          </p>
+        </transition>
+      </li>
+    </ul>
+  </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+  <script src="app.js"></script>
+</body>
 </html>
