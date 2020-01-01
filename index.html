@@ -40,11 +40,11 @@
             {{card.back}}
             <span v-on:click="cards.splice(index, 1)" class="delete-card">X</span>
             <div class="mastery-options">
-              <i v-on:click="setCardToTotallyMastered(card)" class="fa fa-check-circle mastery-option-icon totally-mastered"></i>
+              <i v-on:click="setCardToTotallyMastered(card)" class="fa fa-check-circle mastery-option-icon totally-mastered" v-bind:class="{'totally-mastered':card.totallymastered, 'mastery-indicator-icon':card.totallyMastered}"></i>
               &nbsp;
-              <i v-on:click="setCardToAlmostMastered(card)" class="fa fa-minus-circle mastery-option-icon almost-mastered"></i>
+              <i v-on:click="setCardToAlmostMastered(card)" class="fa fa-minus-circle mastery-option-icon almost-mastered" v-bind:class="{'almost-mastered':card.almostmastered, 'mastery-indicator-icon':card.almostMastered}"></i>
               &nbsp;
-              <i v-on:click="setCardToNotMastered(card)" class="fa fa-times-circle mastery-option-icon not-mastered"></i>
+              <i v-on:click="setCardToNotMastered(card)" class="fa fa-times-circle mastery-option-icon not-mastered" v-bind:class="{'not-mastered':card.notmastered, 'mastery-indicator-icon':card.notMastered}"></i>
             </div>
           </div>
         </transition>
