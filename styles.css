@@ -4,9 +4,9 @@ body {
   }
   
   ul {
-    padding-left: 0;
     display: flex;
     flex-flow: row wrap;
+    padding-left: 0;
   }
   
   li {
@@ -21,60 +21,60 @@ body {
   }
   
   .card {
-    display: block;
-    width: 150px;
-    height: 175px;
-    padding: 80px 50px;
     background-color: #51aae5;
     border-radius: 7px;
-    margin: 5px;
-    text-align: center;
-    line-height: 27px;
-    cursor: pointer;
-    position: relative;
-    color: #fff;
-    font-weight: 600;
-    font-size: 20px;
-    -webkit-box-shadow: 9px 10px 22px -8px rgba(209,193,209,.5);
-    -moz-box-shadow: 9px 10px 22px -8px rgba(209,193,209,.5);
     box-shadow: 9px 10px 22px -8px rgba(209,193,209,.5);
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-size: 20px;
+    font-weight: 600;
+    height: 175px;
+    line-height: 27px;
+    margin: 5px;
+    padding: 80px 50px;
+    position: relative;
+    text-align: center;
+    width: 7em;
     will-change: transform;
+    -moz-box-shadow: 9px 10px 22px -8px rgba(209,193,209,.5);
+    -webkit-box-shadow: 9px 10px 22px -8px rgba(209,193,209,.5);
   }
   
-  li:hover{
+  li:hover {
     transform: scale(1.1);
   }
   
-  li:nth-child(-n+3) .card{
+  li:nth-child(-n+3) .card {
     background-color: #e65f51;
-    }
+  }
   
-  li:nth-child(2n+1) .card{
+  li:nth-child(2n+1) .card {
     background-color: #a17de9;
-    }
+  }
   
-  li:nth-child(4n) .card{
+  li:nth-child(4n) .card {
     background-color: #feca34;
-    }
+  }
   
-  li:nth-child(5n-2) .card{
+  li:nth-child(5n-2) .card {
     background-color: #51aae5;
-    }
+  }
   
-  li:nth-child(4n+4) .card{
+  li:nth-child(4n+4) .card {
     background-color: #feca34;
-    }
+  }
   
-  li:nth-child(-7n+7) .card{
+  li:nth-child(-7n+7) .card {
     background-color: #e46055;
-    }
+  }
   
   .delete-card {
+    opacity: .4;
+    padding: 10px 15px;
     position: absolute;
     right: 0;
     top: 0;
-    padding: 10px 15px;
-    opacity: .4;
     transition: all 0.5s ease;
   }
   
@@ -92,9 +92,8 @@ body {
   }
   
   .flipCard-enter, .flip-leave {
-    transform: rotateY(180deg);
     opacity: 0;
-  
+    transform: rotateY(180deg);
   }
   
   /* Form */
@@ -104,28 +103,28 @@ body {
   
   
   label{
-    font-weight: 400;
     color: #333;
+    font-weight: 400;
     margin-right: 10px;
   }
   
   input{
-    border-radius: 5px;
     border: 2px solid #eaeaea;
-    padding: 10px;
+    border-radius: 5px;
     outline: none;
+    padding: 10px;
   }
   
   button{
-    border-radius: 5px;
-    border: 1px solid #87cb84;
     background-color: #87cb84;
-    padding: 8px 15px;
-    outline: none;
-    font-size: 14px;
-    font-weight: 700;
+    border: 1px solid #87cb84;
+    border-radius: 5px;
     color: #fff;
     cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+    outline: none;
+    padding: 8px 15px;
     transition: all 0.3s ease;
   }
   
@@ -134,8 +133,58 @@ body {
   }
   
   .error{
-    margin-top: 10px;
-    display: block;
     color: #e44e42;
+    display: block;
     font-weight: 600;
+    margin-top: 10px;
+  }
+
+  .mastery-level,
+  .mastery-options {
+    bottom: 0.5em;
+    margin: 0 auto;
+    position: absolute;
+  }
+
+  .mastery-level {
+    left: 50px;
+    width: 7em;
+  }
+
+  .mastery-indicator-icon,
+  .mastery-option-icon {
+    background-color: white;
+    border: 0.1em solid white;
+    border-radius: 50em;
+    padding: 0.25em;
+  }
+
+  .totally-mastered {
+    color: green;
+  }
+
+  .totally-mastered:hover,
+  .mastery-indicator-icon.totally-mastered {
+    background-color: palegreen;
+    border-color: green;
+  }
+
+  .almost-mastered {
+    color: goldenrod;
+  }
+
+  .almost-mastered:hover,
+  .mastery-indicator-icon.almost-mastered {
+    background-color: palegoldenrod;
+    border-color: goldenrod;
+  }
+
+  .not-mastered {
+    color: red;
+  }
+
+  .not-mastered:hover,
+  .mastery-indicator-icon.not-mastered {
+    background-color: palevioletred;
+    border-color: red;
   }

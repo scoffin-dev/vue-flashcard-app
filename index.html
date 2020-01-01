@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="styles.css">
   <title>Flash into Vue</title>
 </head>
@@ -27,14 +27,26 @@
     <ul class="flashcard-list" >
       <li v-on:click="toggleCard(card)" v-for="(card, index) in cards">
         <transition name="flipCard">
-          <p v-if="!card.flipped" key="front" class="card">
+          <div v-if="!card.flipped" key="front" class="card">
               {{card.front}}
               <span v-on:click="cards.splice(index, 1)" class="delete-card">X</span>
-          </p>
-          <p v-else key="back" class="card" >
+              <div class="mastery-level">
+                <i v-show="card.totallyMastered" class="fa fa-check-circle mastery-indicator-icon totally-mastered"></i>
+                <i v-show="card.almostMastered" class="fa fa-minus-circle mastery-indicator-icon almost-mastered"></i>
+                <i v-show="card.notMastered" class="fa fa-times-circle mastery-indicator-icon not-mastered"></i>
+              </div>
+          </div>
+          <div v-else key="back" class="card">
             {{card.back}}
             <span v-on:click="cards.splice(index, 1)" class="delete-card">X</span>
-          </p>
+            <div class="mastery-options">
+              <i v-on:click="setCardToTotallyMastered(card)" class="fa fa-check-circle mastery-option-icon totally-mastered"></i>
+              &nbsp;
+              <i v-on:click="setCardToAlmostMastered(card)" class="fa fa-minus-circle mastery-option-icon almost-mastered"></i>
+              &nbsp;
+              <i v-on:click="setCardToNotMastered(card)" class="fa fa-times-circle mastery-option-icon not-mastered"></i>
+            </div>
+          </div>
         </transition>
       </li>
     </ul>
