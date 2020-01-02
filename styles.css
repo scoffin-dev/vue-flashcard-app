@@ -103,7 +103,6 @@ body {
   
   
   label{
-    color: #333;
     font-weight: 400;
     margin-right: 10px;
   }
@@ -139,6 +138,12 @@ body {
     margin-top: 10px;
   }
 
+  .sort-label-medium,
+  .sort-label-large,
+  .sort-desktop {
+    display:none;
+  }
+
   .mastery-level,
   .mastery-options {
     bottom: 0.5em;
@@ -157,6 +162,15 @@ body {
     border: 0.1em solid white;
     border-radius: 50em;
     padding: 0.25em;
+  }
+
+  .all-levels {
+    color: blue;
+  }
+
+  .all-levels:hover {
+    background-color: paleturquoise;
+    border-color: blue;
   }
 
   .totally-mastered {
@@ -187,4 +201,24 @@ body {
   .mastery-indicator-icon.not-mastered {
     background-color: palevioletred;
     border-color: red;
+  }
+
+  @media only screen and (min-width: 615px) and (max-width: 899px) {
+    .sort-mobile {
+      display: none;
+    }
+    .sort-label-medium,
+    .sort-desktop {
+      display: inline-block;
+    }
+  }
+
+  @media only screen and (min-width: 900px) {
+    .sort-mobile {
+      display: none;
+    }
+    .sort-label-large,
+    .sort-desktop {
+      display: inline-block;
+    }
   }

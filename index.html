@@ -11,40 +11,76 @@
 <body>
   <div id="flashcard-app" class="container">
 
-    <h1>Vue.js Flashcard App</h1>
+    <h1>FLASH into VUE</h1>
+    <p>A flashcard game created with Vue.js</p>
 
+    <!-- Create a new card -->
     <div class="flashcard-form">
-      <label for="front">Front
+      <label for="front">
+        <b>Front</b>
         <input v-model="newCardFront" type="text" id="front">
       </label>
-      <label for="back">Back
+      <label for="back">
+        <b>Back</b>
         <input v-model="newCardBack" v-on:keypress.enter="addNewCard" type="text" id="back">
       </label>
       <button v-on:click="addNewCard()">Add a New Card</button>
       <span v-show="error" class="error">Oops! Flashcards need a front and a back.</span>
     </div>
 
-    <ul class="flashcard-list" >
-      <li v-on:click="toggleCard(card)" v-for="(card, index) in cards">
+    </br>
+
+    <!-- Card sorting -->
+    <div>
+      <b>Sort by Mastery Level:</b>
+      <br class="sort-mobile">
+      <span class="sort-desktop">&nbsp;</span>
+
+      <i v-on:click="setSortLevel('all')" class="fa fa-inbox mastery-option-icon all-levels"></i>
+      <span class="sort-label-large">All levels</span>
+      <span class="sort-label-medium">All</span>
+      &nbsp;
+
+      <i v-on:click="setSortLevel('totally')" class="fa fa-check-circle mastery-option-icon totally-mastered"></i>
+      <span class="sort-label-large">Totally Mastered</span>
+      <span class="sort-label-medium">Totally</span>
+      &nbsp;
+
+      <i v-on:click="setSortLevel('almost')" class="fa fa-minus-circle mastery-option-icon almost-mastered"></i>
+      <span class="sort-label-large">Almost mastered</span>
+      <span class="sort-label-medium">Almost</span>
+      &nbsp;
+
+      <i v-on:click="setSortLevel('not')" class="fa fa-times-circle mastery-option-icon not-mastered"></i>
+      <span class="sort-label-large">Not mastered</span>
+      <span class="sort-label-medium">Not</span>
+    </div>
+
+    <!-- Flashcard deck -->
+    <ul class="flashcard-list">
+      <!-- v-if="sortLevel == 'all' || card.masteryLevel == sort.level" -->
+      <li v-if="sortLevel == 'all' || card.masteryLevel == sortLevel" v-on:click="toggleCard(card)" v-for="(card, index) in cards">
         <transition name="flipCard">
+          <!-- Card front -->
           <div v-if="!card.flipped" key="front" class="card">
               {{card.front}}
               <span v-on:click="cards.splice(index, 1)" class="delete-card">X</span>
               <div class="mastery-level">
-                <i v-show="card.totallyMastered" class="fa fa-check-circle mastery-indicator-icon totally-mastered"></i>
-                <i v-show="card.almostMastered" class="fa fa-minus-circle mastery-indicator-icon almost-mastered"></i>
-                <i v-show="card.notMastered" class="fa fa-times-circle mastery-indicator-icon not-mastered"></i>
+                <i v-if="card.masteryLevel == 'totally'" class="fa fa-check-circle mastery-indicator-icon totally-mastered"></i>
+                <i v-if="card.masteryLevel == 'almost'" class="fa fa-minus-circle mastery-indicator-icon almost-mastered"></i>
+                <i v-if="card.masteryLevel == 'not'" class="fa fa-times-circle mastery-indicator-icon not-mastered"></i>
               </div>
           </div>
+          <!-- Card back -->
           <div v-else key="back" class="card">
             {{card.back}}
             <span v-on:click="cards.splice(index, 1)" class="delete-card">X</span>
             <div class="mastery-options">
-              <i v-on:click="setCardToTotallyMastered(card)" class="fa fa-check-circle mastery-option-icon totally-mastered" v-bind:class="{'totally-mastered':card.totallymastered, 'mastery-indicator-icon':card.totallyMastered}"></i>
+              <i v-on:click="setMasteryLevel(card, 'totally')" v-on:mouseover="showMasteryOptionTooltip(card, 'totally')" class="fa fa-check-circle mastery-option-icon totally-mastered" v-bind:class="{'totally-mastered':card.totallymastered, 'mastery-indicator-icon':card.totallyMastered}"></i>
               &nbsp;
-              <i v-on:click="setCardToAlmostMastered(card)" class="fa fa-minus-circle mastery-option-icon almost-mastered" v-bind:class="{'almost-mastered':card.almostmastered, 'mastery-indicator-icon':card.almostMastered}"></i>
+              <i v-on:click="setMasteryLevel(card, 'almost')" v-on:mouseover="showMasteryOptionTooltip(card, 'almost')" class="fa fa-minus-circle mastery-option-icon almost-mastered" v-bind:class="{'almost-mastered':card.almostmastered, 'mastery-indicator-icon':card.almostMastered}"></i>
               &nbsp;
-              <i v-on:click="setCardToNotMastered(card)" class="fa fa-times-circle mastery-option-icon not-mastered" v-bind:class="{'not-mastered':card.notmastered, 'mastery-indicator-icon':card.notMastered}"></i>
+              <i v-on:click="setMasteryLevel(card, 'not')" v-on:mouseover="showMasteryOptionTooltip(card, 'not')" class="fa fa-times-circle mastery-option-icon not-mastered" v-bind:class="{'not-mastered':card.notmastered, 'mastery-indicator-icon':card.notMastered}"></i>
             </div>
           </div>
         </transition>
