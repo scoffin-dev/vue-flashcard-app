@@ -94,7 +94,6 @@ const cards = [
           card.flipped = !card.flipped;
           card.masteryLevel = 'not';
         }
-        alert(card.masteryLevel);
       },
       addNewCard() {
         if(!this.newCardFront || !this.newCardBack) {
