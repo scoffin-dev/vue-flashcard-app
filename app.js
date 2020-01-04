@@ -49,6 +49,9 @@ const cards = [
         
         if(level == 'totally') {
           // hide all cards != 'totally'
+          if(totallyMasteredCards == 'undefined') {
+            alert('There are no totally mastered cards.')
+          }
           for(let i = 0; i < totallyMasteredCards.length; i++) {
             totallyMasteredCards[i].style.display = 'inline-block';
           }
@@ -60,6 +63,9 @@ const cards = [
           }
         } else if(level == 'almost') {
           // hide all cards != 'almost'
+          if(almostMasteredCards == 'undefined') {
+            alert('There are no totally mastered cards.')
+          }
           for(let i = 0; i < almostMasteredCards.length; i++) {
             almostMasteredCards[i].style.display = 'inline-block';
           }
@@ -71,6 +77,9 @@ const cards = [
           }
         } else if(level == 'not') {
           // hide all cards != 'not'
+          if(notMasteredCards == 'undefined') {
+            alert('There are no totally mastered cards.')
+          }
           for(let i = 0; i < notMasteredCards.length; i++) {
             notMasteredCards[i].style.display = 'inline-block';
           }
@@ -80,17 +89,7 @@ const cards = [
           for(let i = 0; i < almostMasteredCards.length; i++) {
             almostMasteredCards[i].style.display = 'none';
           }
-        } else { // level == 'all'
-          // show all cards
-          /*for(let i = 0; i < totallyMasteredCards.length; i++) {
-            totallyMasteredCards[i].style.display = 'inline-block';
-          }
-          for(let i = 0; i < almostMasteredCards.length; i++) {
-            almostMasteredCards[i].style.display = 'inline-block';
-          }
-          for(let i = 0; i < notMasteredCards.length; i++) {
-            notMasteredCards[i].style.display = 'inline-block';
-          }*/
+        } else {
           for(let i = 0; i < allCards.length; i++) {
             allCards[i].style.display = 'inline-block';
           }
@@ -107,6 +106,7 @@ const cards = [
           card.flipped = !card.flipped;
           card.masteryLevel = 'not';
         }
+        alert(card.masteryLevel);
       },
       addNewCard() {
         if(!this.newCardFront || !this.newCardBack) {

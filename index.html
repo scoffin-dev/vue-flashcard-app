@@ -76,11 +76,11 @@
             {{card.back}}
             <span v-on:click="cards.splice(index, 1)" class="delete-card">X</span>
             <div class="mastery-options">
-              <i v-on:click="setMasteryLevel(card, 'totally')" class="fa fa-check-circle mastery-option-icon totally-mastered" v-bind:class="{'totally-mastered':card.totallymastered, 'mastery-indicator-icon':card.totallyMastered}"></i>
+              <i v-on:click="setMasteryLevel(card, 'totally')" class="fa fa-check-circle mastery-option-icon totally-mastered" v-bind:class="{'mastery-indicator-icon':card.masteryLevel == 'totally'}"></i>
               &nbsp;
-              <i v-on:click="setMasteryLevel(card, 'almost')" class="fa fa-minus-circle mastery-option-icon almost-mastered" v-bind:class="{'almost-mastered':card.almostmastered, 'mastery-indicator-icon':card.almostMastered}"></i>
+              <i v-on:click="setMasteryLevel(card, 'almost')" class="fa fa-minus-circle mastery-option-icon almost-mastered" v-bind:class="{'mastery-indicator-icon':card.masteryLevel == 'almost'}"></i>
               &nbsp;
-              <i v-on:click="setMasteryLevel(card, 'not')" class="fa fa-times-circle mastery-option-icon not-mastered" v-bind:class="{'not-mastered':card.notmastered, 'mastery-indicator-icon':card.notMastered}"></i>
+              <i v-on:click="setMasteryLevel(card, 'not')" class="fa fa-times-circle mastery-option-icon not-mastered" v-bind:class="{'mastery-indicator-icon':card.masteryLevel == 'not'}"></i>
             </div>
           </div>
         </transition>
