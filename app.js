@@ -3,28 +3,25 @@ const cards = [
       front: 'The "First Computer Programmer"',
       back: 'Ada Lovelace',
       flipped: false,
-      masteryLevel: 'not'
+      masteryLevel: ''
     },
     {
       front: 'Invented the "Clarke Calculator"',
       back: 'Edith Clarke',
       flipped: false,
-      masteryLevel: 'not'
+      masteryLevel: ''
     },
     {
       front: 'Famous World War II Enigma code breaker',
       back: 'Alan Turing',
       flipped: false,
-      masteryLevel: 'not'
+      masteryLevel: ''
     },
     {
       front: 'Created satellite orbit analyzation software for NASA',
       back: 'Dr. Evelyn Boyd Granville',
       flipped: false,
-      totallyMastered: false,
-      almostMastered: false,
-      notMastered: true,
-      masteryLevel: 'not'
+      masteryLevel: ''
     },
   ]; 
 
