@@ -41,32 +41,71 @@ const cards = [
       toggleCard(card) {
         card.flipped = !card.flipped;
       },
-      setSortLevel(level) {
-        if(level == 'all' || level == 'totally' || level == 'almost' || level == 'not') {
-          sortLevel == level;
-        } else {
-          sortLevel == 'all';
+      sortCards(level) {
+        let allCards = document.getElementsByClassName('card-container');
+        let totallyMasteredCards = document.getElementsByClassName('totally');
+        let almostMasteredCards = document.getElementsByClassName('almost');
+        let notMasteredCards = document.getElementsByClassName('not'); 
+        
+        if(level == 'totally') {
+          // hide all cards != 'totally'
+          for(let i = 0; i < totallyMasteredCards.length; i++) {
+            totallyMasteredCards[i].style.display = 'inline-block';
+          }
+          for(let i = 0; i < almostMasteredCards.length; i++) {
+            almostMasteredCards[i].style.display = 'none';
+          }
+          for(let i = 0; i < notMasteredCards.length; i++) {
+            notMasteredCards[i].style.display = 'none';
+          }
+        } else if(level == 'almost') {
+          // hide all cards != 'almost'
+          for(let i = 0; i < almostMasteredCards.length; i++) {
+            almostMasteredCards[i].style.display = 'inline-block';
+          }
+          for(let i = 0; i < totallyMasteredCards.length; i++) {
+            totallyMasteredCards[i].style.display = 'none';
+          }
+          for(let i = 0; i < notMasteredCards.length; i++) {
+            notMasteredCards[i].style.display = 'none';
+          }
+        } else if(level == 'not') {
+          // hide all cards != 'not'
+          for(let i = 0; i < notMasteredCards.length; i++) {
+            notMasteredCards[i].style.display = 'inline-block';
+          }
+          for(let i = 0; i < almostMasteredCards.length; i++) {
+            totallyMasteredCards[i].style.display = 'none';
+          }
+          for(let i = 0; i < almostMasteredCards.length; i++) {
+            almostMasteredCards[i].style.display = 'none';
+          }
+        } else { // level == 'all'
+          // show all cards
+          /*for(let i = 0; i < totallyMasteredCards.length; i++) {
+            totallyMasteredCards[i].style.display = 'inline-block';
+          }
+          for(let i = 0; i < almostMasteredCards.length; i++) {
+            almostMasteredCards[i].style.display = 'inline-block';
+          }
+          for(let i = 0; i < notMasteredCards.length; i++) {
+            notMasteredCards[i].style.display = 'inline-block';
+          }*/
+          for(let i = 0; i < allCards.length; i++) {
+            allCards[i].style.display = 'inline-block';
+          }
         }
       },
       setMasteryLevel(card, level) {
         if(level == 'totally') {
           card.flipped = !card.flipped;
           card.masteryLevel = 'totally';
-          /*card.totallyMastered = true;
-          card.almostMastered = false;
-          card.notMastered = false;*/
         } else if(level == 'almost') {
           card.flipped = !card.flipped;
           card.masteryLevel = 'almost';
-          /*card.totallyMastered = false;
-          card.almostMastered = true;
-          card.notMastered = false;*/
         } else {
           card.flipped = !card.flipped;
           card.masteryLevel = 'not';
-          /*card.totallyMastered = false;
-          card.almostMastered = false;
-          card.notMastered = true;*/
         }
       },
       addNewCard() {
