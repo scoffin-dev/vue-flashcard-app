@@ -48,10 +48,6 @@ const cards = [
         let notMasteredCards = document.getElementsByClassName('not'); 
         
         if(level == 'totally') {
-          // hide all cards != 'totally'
-          if(totallyMasteredCards == 'undefined') {
-            alert('There are no totally mastered cards.')
-          }
           for(let i = 0; i < totallyMasteredCards.length; i++) {
             totallyMasteredCards[i].style.display = 'inline-block';
           }
@@ -62,10 +58,6 @@ const cards = [
             notMasteredCards[i].style.display = 'none';
           }
         } else if(level == 'almost') {
-          // hide all cards != 'almost'
-          if(almostMasteredCards == 'undefined') {
-            alert('There are no totally mastered cards.')
-          }
           for(let i = 0; i < almostMasteredCards.length; i++) {
             almostMasteredCards[i].style.display = 'inline-block';
           }
@@ -76,18 +68,14 @@ const cards = [
             notMasteredCards[i].style.display = 'none';
           }
         } else if(level == 'not') {
-          // hide all cards != 'not'
-          if(notMasteredCards == 'undefined') {
-            alert('There are no totally mastered cards.')
-          }
           for(let i = 0; i < notMasteredCards.length; i++) {
             notMasteredCards[i].style.display = 'inline-block';
           }
           for(let i = 0; i < almostMasteredCards.length; i++) {
-            totallyMasteredCards[i].style.display = 'none';
-          }
-          for(let i = 0; i < almostMasteredCards.length; i++) {
             almostMasteredCards[i].style.display = 'none';
+          }
+          for(let i = 0; i < totallyMasteredCards.length; i++) {
+            totallyMasteredCards[i].style.display = 'none';
           }
         } else {
           for(let i = 0; i < allCards.length; i++) {
