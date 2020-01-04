@@ -2,6 +2,10 @@ body {
     font-family: 'Montserrat', sans-serif;
     text-align: center;
   }
+
+  [v-cloak] {
+    display: none
+  }
   
   ul {
     display: inline-flex;
@@ -33,6 +37,8 @@ body {
     height: 175px;
     line-height: 27px;
     margin: 5px;
+    overflow-wrap: break-word;
+    overflow-y: scroll;
     padding: 80px 50px;
     position: relative;
     text-align: center;
@@ -122,6 +128,10 @@ body {
     outline: none;
     padding: 10px;
   }
+
+  #back {
+    margin-top: 1em;
+  }
   
   button {
     background-color: #87cb84;
@@ -163,7 +173,7 @@ body {
 
   .mastery-level,
   .mastery-options {
-    bottom: 0.5em;
+    top: 0.5em;
     margin: 0 auto;
     position: absolute;
   }
@@ -223,6 +233,9 @@ body {
   @media only screen and (min-width: 675px) {
     #tagline {
       display: inline-block;
+    }
+    #back {
+      margin-top: 0;
     }
   }
 
