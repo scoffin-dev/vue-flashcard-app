@@ -39,6 +39,7 @@ const cards = [
         card.flipped = !card.flipped;
       },
       sortCards(level) {
+        // TO DO: Fix sorting by accounting for cards w/ blank mastery levels
         let allCards = document.getElementsByClassName('card-container');
         let totallyMasteredCards = document.getElementsByClassName('totally');
         let almostMasteredCards = document.getElementsByClassName('almost');
