@@ -12,19 +12,22 @@
   <div id="flashcard-app" class="container">
 
     <h1>FLASH into VUE</h1>
-    <p>A flashcard game created with Vue.js</p>
+    <p id="tagline">A flashcard game created with Vue.js</p>
 
     <!-- Create a new card -->
     <div class="flashcard-form">
-      <label for="front">
+      <b style='display:inline-block'>CREATE NEW CARD:</b>
+      <br class="options-mobile">
+      <span class="sort-desktop">&nbsp;</span>
+      <label class="new-card-field" for="front">
         <b>Front</b>
         <input v-model="newCardFront" type="text" id="front">
       </label>
-      <label for="back">
+      <label class="new-card-field" for="back">
         <b>Back</b>
         <input v-model="newCardBack" v-on:keypress.enter="addNewCard" type="text" id="back">
       </label>
-      <button v-on:click="addNewCard()">Add a New Card</button>
+      <button v-on:click="addNewCard()" class="new-card-field">Add a New Card</button>
       <span v-show="error" class="error">Oops! Flashcards need a front and a back.</span>
     </div>
 
@@ -32,8 +35,8 @@
 
     <!-- Card sorting -->
     <div>
-      <b>Sort by Mastery Level:</b>
-      <br class="sort-mobile">
+      <b>SORT BY MASTERY LEVEL:</b>
+      <br class="options-mobile">
       <span class="sort-desktop">&nbsp;</span>
 
       <i v-on:click="sortCards('all')" class="fa fa-inbox mastery-option-icon all-levels"></i>
@@ -57,6 +60,7 @@
     </div>
 
     <!-- Flashcard deck -->
+    <div>
     <ul class="flashcard-list">
       <!-- v-if="sortLevel == 'all' || card.masteryLevel == sortLevel" -->
       <li v-on:click="toggleCard(card)" v-for="(card, index) in cards" v-bind:class="card.masteryLevel" class="card-container">
@@ -86,6 +90,7 @@
         </transition>
       </li>
     </ul>
+    </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>

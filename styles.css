@@ -4,9 +4,10 @@ body {
   }
   
   ul {
-    display: flex;
+    display: inline-flex;
     flex-flow: row wrap;
     padding-left: 0;
+    justify-content: center;
   }
   
   li {
@@ -95,26 +96,34 @@ body {
     opacity: 0;
     transform: rotateY(180deg);
   }
+
+  #tagline {
+    display: none;
+  }
   
   /* Form */
-  .flashcard-form{
+  .flashcard-form {
     position: relative;
   }
   
+  .new-card-field {
+    display: block;
+    margin: 0 auto;
+  }
   
-  label{
+  label {
     font-weight: 400;
     margin-right: 10px;
   }
   
-  input{
+  input {
     border: 2px solid #eaeaea;
     border-radius: 5px;
     outline: none;
     padding: 10px;
   }
   
-  button{
+  button {
     background-color: #87cb84;
     border: 1px solid #87cb84;
     border-radius: 5px;
@@ -127,15 +136,23 @@ body {
     transition: all 0.3s ease;
   }
   
-  button:hover{
+  button:hover {
     background-color: #70a66f;
   }
   
-  .error{
+  .error {
     color: #e44e42;
     display: block;
     font-weight: 600;
     margin-top: 10px;
+  }
+
+  #front {
+    margin-top: 1em;
+  }
+
+  button.new-card-field {
+    margin-top: 1em;
   }
 
   .sort-label-medium,
@@ -203,9 +220,22 @@ body {
     border-color: red;
   }
 
-  @media only screen and (min-width: 615px) and (max-width: 899px) {
-    .sort-mobile {
+  @media only screen and (min-width: 675px) {
+    #tagline {
+      display: inline-block;
+    }
+  }
+
+  @media only screen and (min-width: 675px) and (max-width: 899px) {
+    .new-card-field {
+      display: inline-block;
+    }
+    .options-mobile {
       display: none;
+    }
+    button.new-card-field {
+      display: block;
+      margin: 1em auto 0;
     }
     .sort-label-medium,
     .sort-desktop {
@@ -214,7 +244,10 @@ body {
   }
 
   @media only screen and (min-width: 900px) {
-    .sort-mobile {
+    .new-card-field {
+      display: inline-block;
+    }
+    .options-mobile {
       display: none;
     }
     .sort-label-large,
