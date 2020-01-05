@@ -3,25 +3,25 @@ const cards = [
       front: 'The "First Computer Programmer"',
       back: 'Ada Lovelace',
       flipped: false,
-      masteryLevel: ''
+      masteryLevel: 'unmarked'
     },
     {
       front: 'Invented the "Clarke Calculator"',
       back: 'Edith Clarke',
       flipped: false,
-      masteryLevel: ''
+      masteryLevel: 'unmarked'
     },
     {
       front: 'Famous World War II Enigma code breaker',
       back: 'Alan Turing',
       flipped: false,
-      masteryLevel: ''
+      masteryLevel: 'unmarked'
     },
     {
       front: 'Created satellite orbit analyzation software for NASA',
       back: 'Dr. Evelyn Boyd Granville',
       flipped: false,
-      masteryLevel: ''
+      masteryLevel: 'unmarked'
     },
   ]; 
 
@@ -41,6 +41,7 @@ const cards = [
       sortCards(level) {
         // TO DO: Fix sorting by accounting for cards w/ blank mastery levels
         let allCards = document.getElementsByClassName('card-container');
+        let unmarkedCards = document.getElementsByClassName('unmarked');
         let totallyMasteredCards = document.getElementsByClassName('totally');
         let almostMasteredCards = document.getElementsByClassName('almost');
         let notMasteredCards = document.getElementsByClassName('not'); 
@@ -48,6 +49,9 @@ const cards = [
         if(level == 'totally') {
           for(let i = 0; i < totallyMasteredCards.length; i++) {
             totallyMasteredCards[i].style.display = 'inline-block';
+          }
+          for(let i = 0; i < unmarkedCards.length; i++) {
+            unmarkedCards[i].style.display = 'none';
           }
           for(let i = 0; i < almostMasteredCards.length; i++) {
             almostMasteredCards[i].style.display = 'none';
@@ -59,6 +63,9 @@ const cards = [
           for(let i = 0; i < almostMasteredCards.length; i++) {
             almostMasteredCards[i].style.display = 'inline-block';
           }
+          for(let i = 0; i < unmarkedCards.length; i++) {
+            unmarkedCards[i].style.display = 'none';
+          }
           for(let i = 0; i < totallyMasteredCards.length; i++) {
             totallyMasteredCards[i].style.display = 'none';
           }
@@ -68,6 +75,9 @@ const cards = [
         } else if(level == 'not') {
           for(let i = 0; i < notMasteredCards.length; i++) {
             notMasteredCards[i].style.display = 'inline-block';
+          }
+          for(let i = 0; i < unmarkedCards.length; i++) {
+            unmarkedCards[i].style.display = 'none';
           }
           for(let i = 0; i < almostMasteredCards.length; i++) {
             almostMasteredCards[i].style.display = 'none';

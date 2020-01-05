@@ -173,9 +173,10 @@ body {
 
   .mastery-level,
   .mastery-options {
-    top: 0.5em;
+    left: 1em;
     margin: 0 auto;
     position: absolute;
+    top: 0.5em;
   }
 
   .mastery-level {
